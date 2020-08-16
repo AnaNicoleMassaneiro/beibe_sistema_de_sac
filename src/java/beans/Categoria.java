@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Ana
+ * @author Ana Nicole
  */
 public class Categoria implements Serializable{
     private int id;

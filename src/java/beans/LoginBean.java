@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Ana
+ * @author Ana Nicole
  */
 public class LoginBean implements Serializable{
     private String login, nome;
