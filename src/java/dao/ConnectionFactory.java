@@ -17,8 +17,8 @@ public class ConnectionFactory {
     public Connection getConexao() {
         Connection conexao = null;
         String usuario = "postgres";
-        String senha = "123456";
-        String nomeBancoDados = "agoraVai";
+        String senha = "rootroot";
+        String nomeBancoDados = "web2";
 
         try {
             Class.forName("org.postgresql.Driver");
