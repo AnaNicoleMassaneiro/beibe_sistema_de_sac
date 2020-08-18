@@ -1,0 +1,85 @@
+CREATE DATABASE web2_beibe;
+
+
+CREATE TABLE estado(
+	siglaUf char(2) NOT NULL UNIQUE,
+    nomeEstado varchar(30) NOT NULL,
+    PRIMARY KEY (siglaUf)
+);
+
+CREATE TABLE cidade(
+	idCidade SERIAL,
+    nomeCidade VARCHAR(50) NOT NULL,
+    siglaUf char(2) NOT NULL,
+    PRIMARY KEY (idCidade),
+    FOREIGN KEY (siglaUf) REFERENCES estado (siglaUf)
+);
+
+CREATE TABLE endereco(
+	idEndereco SERIAL,
+    rua VARCHAR(50) NOT NULL,
+    numero INT,
+    complemento VARCHAR(50),
+    bairro VARCHAR(50) NOT NULL,
+    cep VARCHAR(9) NOT NULL,
+    idCidade INT NOT NULL,
+    siglaUf char(2) NOT NULL,
+    PRIMARY KEY (idEndereco),
+    FOREIGN KEY (idCidade) REFERENCES cidade (idCidade),
+    FOREIGN KEY (siglaUf) REFERENCES estado (siglaUf)
+);
+
+CREATE TABLE tipoPessoa(
+	idTipoPessoa SERIAL,
+    nomeTipoPessoa VARCHAR(15),
+    PRIMARY KEY (idTipoPessoa)
+);
+
+CREATE TABLE pessoa(
+	idPessoa SERIAL,
+    nomePessoa VARCHAR (70) NOT NULL,
+    cpf VARCHAR (11) NOT NULL,
+    email VARCHAR (100) NOT NULL,
+    telefone VARCHAR (14) NOT NULL,
+    senha VARCHAR (64) NOT NULL,
+    idEndereco INT NOT NULL,
+    idTipoPessoa INT NOT NULL,
+    PRIMARY KEY (idPessoa),
+    FOREIGN KEY (idEndereco) REFERENCES endereco (idEndereco),
+    FOREIGN KEY (idTipoPessoa) REFERENCES tipoPessoa (idTipoPessoa)
+);
+
+CREATE TABLE tipoAtendimento(
+	idTipoAtendimento SERIAL,
+    nomeTipoAtendimento VARCHAR(50) NOT NULL,
+    PRIMARY KEY (idTipoAtendimento)
+);
+
+CREATE TABLE categoria(
+	idCategoria SERIAL,
+    nomeCategoria VARCHAR(30) NOT NULL,
+    PRIMARY KEY (idCategoria)
+);
+
+CREATE TABLE produto(
+	idProduto SERIAL,
+    nomeProduto VARCHAR(50) NOT NULL,
+    idCategoria INT NOT NULL,
+    descricao VARCHAR(1000) NOT NULL,
+	peso INT NOT NULL,
+    PRIMARY KEY (idProduto),
+    FOREIGN KEY (idCategoria) REFERENCES categoria (idCategoria)
+);
+
+CREATE TABLE atendimento(
+	idAtendimento SERIAL,
+    dataHoraAtendimento TIMESTAMP NOT NULL,
+    atendimentoAberto boolean NOT NULL,
+    idProduto INT NOT NULL,
+    idTipoAtendimento INT NOT NULL,
+    descricao VARCHAR(1000),
+    solucao VARCHAR(1000),	
+    PRIMARY KEY (idAtendimento),
+    FOREIGN KEY (idProduto) REFERENCES produto (idProduto),
+    FOREIGN KEY (idTipoAtendimento) REFERENCES tipoAtendimento (idTipoAtendimento)
+);
