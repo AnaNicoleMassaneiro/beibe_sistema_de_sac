@@ -13,10 +13,6 @@ import dao.interfaces.DAO;
 import exceptions.DAOException;
 import java.sql.SQLException;
 
-/**
- *
- * @author Ana Nicole
- */
 public class CategoriaDAO implements DAO<Categoria> {
     
     private static final String QUERY_BUSCAR_TODOS = "SELECT id_tipo_atendimento, nome_tipo_Atendimento FROM tb_tipo_atendimento";
@@ -55,6 +51,5 @@ public class CategoriaDAO implements DAO<Categoria> {
     public void remover(Categoria t) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
     
 }

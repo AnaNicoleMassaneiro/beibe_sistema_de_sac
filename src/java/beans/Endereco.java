@@ -2,10 +2,6 @@ package beans;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Leonardo
- */
 public class Endereco implements Serializable {
 
     private int id;

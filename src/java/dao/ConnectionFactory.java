@@ -5,10 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Ana Nicole
- */
 public class ConnectionFactory implements AutoCloseable {
 
     //private static final String DRIVER = "com.mysql.cj.jdbc.Driver";

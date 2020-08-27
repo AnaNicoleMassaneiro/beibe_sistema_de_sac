@@ -10,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Leonardo
- */
 public class CidadeDAO implements DAO<Cidade> {
 
     private static final String QUERY_BUSCAR_TODOS = "SELECT id_cidade, nome_cidade, id_estado FROM tb_cidade";

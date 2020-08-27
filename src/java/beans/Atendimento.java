@@ -3,10 +3,6 @@ package beans;
 import java.io.Serializable;
 import java.sql.Date;
 
-/**
- *
- * @author Ana Nicole
- */
 public class Atendimento implements Serializable {
 
     private int id;
