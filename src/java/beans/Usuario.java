@@ -4,62 +4,39 @@ import java.io.Serializable;
 
 /**
  *
- * @author Ana
+ * @author Ana Nicole
  */
-public class Usuario implements Serializable{
-    private int nr, cidade, uf;
-    private String cpf, nome, email, rua, cep, senha, tel, bairro, complemento;
-    private TipoUsuario perfil;
-    
+public class Usuario implements Serializable {
+
+    private int id;
+    private String nome;
+    private String cpf;
+    private String email;
+    private String telefone;
+    private String senha;
+    private Endereco endereco;
+    private TipoUsuario tipoUsuario;
+
     public Usuario() {
     }
 
-    public Usuario(int nr, TipoUsuario perfil, String cpf, String nome, String email, String rua, String cep, int cidade, int uf, String senha, String tel, String bairro, String complemento) {
-        this.nr = nr;
-        this.perfil = perfil;
-        this.cpf = cpf;
+    public Usuario(int id, String nome, String cpf, String email, String telefone, String senha, Endereco endereco, TipoUsuario tipoUsuario) {
+        this.id = id;
         this.nome = nome;
-        this.email = email;
-        this.rua = rua;
-        this.cep = cep;
-        this.cidade = cidade;
-        this.uf = uf;
-        this.senha = senha;
-        this.tel = tel;
-        this.bairro = bairro;
-        this.complemento = complemento;
-    }
-
-    public int getNr() {
-        return nr;
-    }
-
-    public void setNr(int nr) {
-        this.nr = nr;
-    }
-
-    public TipoUsuario getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(TipoUsuario perfil) {
-        this.perfil = perfil;
-    }
-    
-    public int getPerfilId() {
-        return perfil.getId();
-    }
-
-    public void setPerfil(int perfil) {
-        this.perfil = new TipoUsuario(perfil);
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
         this.cpf = cpf;
+        this.email = email;
+        this.telefone = telefone;
+        this.senha = senha;
+        this.endereco = endereco;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -70,6 +47,14 @@ public class Usuario implements Serializable{
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -78,36 +63,12 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public String getRua() {
-        return rua;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public int getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(int cidade) {
-        this.cidade = cidade;
-    }
-
-    public int getUf() {
-        return uf;
-    }
-
-    public void setUf(int uf) {
-        this.uf = uf;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getSenha() {
@@ -118,27 +79,20 @@ public class Usuario implements Serializable{
         this.senha = senha;
     }
 
-    public String getTel() {
-        return tel;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    public String getBairro() {
-        return bairro;
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
 }

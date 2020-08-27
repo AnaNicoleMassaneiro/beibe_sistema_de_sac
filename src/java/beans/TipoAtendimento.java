@@ -6,22 +6,18 @@ import java.io.Serializable;
  *
  * @author Ana Nicole
  */
-public class TipoUsuario implements Serializable {
+public class TipoAtendimento implements Serializable {
 
     private int id;
     private String nome;
 
-    public TipoUsuario() {
+    public TipoAtendimento() {
     }
 
-    public TipoUsuario(int id) {
-        this.id = id;
-    }
-
-    public TipoUsuario(int id, String nome) {
+    public TipoAtendimento(int id, String nome) {
         this.id = id;
         this.nome = nome;
-    }
+    }  
 
     public int getId() {
         return id;

@@ -1,31 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import java.io.Serializable;
 
 /**
  *
- * @author Ana
+ * @author Leonardo
  */
-public class Tipo implements Serializable {
+public class Cidade implements Serializable {
 
     private int id;
     private String nome;
+    private int idEstado;
 
-    public Tipo() {
+    public Cidade() {
     }
 
-    public Tipo(int id) {
-        this.id = id;
-    }
-
-    public Tipo(int id, String nome) {
+    public Cidade(int id, String nome, int idEstado) {
         this.id = id;
         this.nome = nome;
+        this.idEstado = idEstado;
     }
 
     public int getId() {
@@ -42,6 +35,14 @@ public class Tipo implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
     }
 
 }

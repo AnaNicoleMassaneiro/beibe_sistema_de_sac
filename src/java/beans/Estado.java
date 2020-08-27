@@ -4,22 +4,20 @@ import java.io.Serializable;
 
 /**
  *
- * @author Ana Nicole
+ * @author Leonardo
  */
-public class TipoUsuario implements Serializable {
+public class Estado implements Serializable {
 
     private int id;
+    private String sigla;
     private String nome;
 
-    public TipoUsuario() {
+    public Estado() {
     }
 
-    public TipoUsuario(int id) {
+    public Estado(int id, String sigla, String nome) {
         this.id = id;
-    }
-
-    public TipoUsuario(int id, String nome) {
-        this.id = id;
+        this.sigla = sigla;
         this.nome = nome;
     }
 
@@ -29,6 +27,14 @@ public class TipoUsuario implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 
     public String getNome() {

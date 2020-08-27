@@ -1,31 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 import java.io.Serializable;
 
 /**
  *
- * @author Ana
+ * @author Ana Nicole
  */
-public class Produto implements Serializable{
-    private int id, peso;
-    private String nome, descricao;
+public class Produto implements Serializable {
+
+    private int id;
+    private String nome;
+    private String descricao;
     private Categoria categoria;
-    
+    private int peso;
+
     public Produto() {
     }
-    
-    public Produto(int id) {
-        this.id = id;
-    }
 
-    public Produto(int id, String nome) {
+    public Produto(int id, String nome, String descricao, Categoria categoria, int peso) {
         this.id = id;
         this.nome = nome;
+        this.descricao = descricao;
+        this.categoria = categoria;
+        this.peso = peso;
     }
 
     public int getId() {
@@ -34,30 +31,6 @@ public class Produto implements Serializable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
-
-    public int getCategoriaId() {
-        return categoria.getId();
-    }
-    
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-    
-    public void setCategoria(int categoria) {
-        this.categoria = new Categoria(categoria);
     }
 
     public String getNome() {
@@ -75,4 +48,21 @@ public class Produto implements Serializable{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
 }

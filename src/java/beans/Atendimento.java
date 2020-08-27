@@ -5,31 +5,31 @@ import java.sql.Date;
 
 /**
  *
- * @author Ana
+ * @author Ana Nicole
  */
-public class Atendimento implements Serializable{
+public class Atendimento implements Serializable {
+
     private int id;
-    private String descricao, solucao, cliente;
-    private Date abertura, fim;
-    private boolean situacao;
-    private Produto produto = new Produto();
-    private Categoria categoria = new Categoria();
-    private Tipo tipo = new Tipo();
-    
+    private Date dataHora;
+    private boolean aberto;
+    private String descricao;
+    private String solucao;
+    private Produto produto;
+    private TipoAtendimento tipoAtendimento;
+    private Usuario usuario;
+
     public Atendimento() {
     }
 
-    public Atendimento(int id, Tipo tipo, String descricao, String solucao, String cliente, Date abertura, Date fim, boolean situacao, Produto produto, Categoria categoria) {
+    public Atendimento(int id, Date dataHora, boolean aberto, String descricao, String solucao, Produto produto, TipoAtendimento tipoAtendimento, Usuario usuario) {
         this.id = id;
-        this.tipo = tipo;
+        this.dataHora = dataHora;
+        this.aberto = aberto;
         this.descricao = descricao;
         this.solucao = solucao;
-        this.cliente = cliente;
-        this.abertura = abertura;
-        this.fim = fim;
-        this.situacao = situacao;
         this.produto = produto;
-        this.categoria = categoria;
+        this.tipoAtendimento = tipoAtendimento;
+        this.usuario = usuario;
     }
 
     public int getId() {
@@ -40,20 +40,20 @@ public class Atendimento implements Serializable{
         this.id = id;
     }
 
-    public int getTipoId() {
-        return tipo.getId();
-    }
-    
-    public Tipo getTipo() {
-        return tipo;
+    public Date getDataHora() {
+        return dataHora;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = new Tipo(tipo);
+    public void setDataHora(Date dataHora) {
+        this.dataHora = dataHora;
     }
-    
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
+
+    public boolean isAberto() {
+        return aberto;
+    }
+
+    public void setAberto(boolean aberto) {
+        this.aberto = aberto;
     }
 
     public String getDescricao() {
@@ -72,42 +72,6 @@ public class Atendimento implements Serializable{
         this.solucao = solucao;
     }
 
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
-    public Date getAbertura() {
-        return abertura;
-    }
-
-    public void setAbertura(Date abertura) {
-        this.abertura = abertura;
-    }
-
-    public Date getFim() {
-        return fim;
-    }
-
-    public void setFim(Date fim) {
-        this.fim = fim;
-    }
-
-    public boolean isSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(boolean situacao) {
-        this.situacao = situacao;
-    }
-
-    public int getProdutoId() {
-        return produto.getId();
-    }
-    
     public Produto getProduto() {
         return produto;
     }
@@ -115,25 +79,21 @@ public class Atendimento implements Serializable{
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
-    public void setProduto(int produto) {
-        this.produto = new Produto(produto);
+
+    public TipoAtendimento getTipoAtendimento() {
+        return tipoAtendimento;
     }
 
-    public int getCategoriaId() {
-        return categoria.getId();
-    }
-    
-    public Categoria getCategoria() {
-        return categoria;
+    public void setTipoAtendimento(TipoAtendimento tipoAtendimento) {
+        this.tipoAtendimento = tipoAtendimento;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-    
-    public void setCategoria(int categoria) {
-        this.categoria = new Categoria(categoria);
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-   
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
 }
