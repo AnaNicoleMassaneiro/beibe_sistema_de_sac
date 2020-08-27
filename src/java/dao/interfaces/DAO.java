@@ -4,7 +4,7 @@ import exceptions.DAOException;
 import java.util.List;
 
 public interface DAO<T> {
-
+    
     T buscar(int id) throws DAOException;
 
     List<T> buscarTodos() throws DAOException;

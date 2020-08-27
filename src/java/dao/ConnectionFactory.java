@@ -11,15 +11,17 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory implements AutoCloseable {
 
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    //private static final String DRIVER = "org.postgresql.Driver";
+    //private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String DRIVER = "org.postgresql.Driver";
     private static final String ALTDRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/javaweb2";
+    //private static final String URL = "jdbc:mysql://localhost:3306/javaweb2";
+    private static final String URL = "jdbc:postgresql://localhost:5432/web2_beibe";
     private static final String USUARIO = "web2";
     //private static final String USUARIO = "postgres";
     private static final String SENHA = "web2";
     //private static final String SENHA = "rootroot";
-    private static final String TIMEZONEPARAM = "?useTimezone=true&serverTimezone=UTC";
+    //private static final String TIMEZONEPARAM = "?useTimezone=true&serverTimezone=UTC";
+    private static final String TIMEZONEPARAM = "";
 
     private Connection con = null;
 
@@ -27,7 +29,7 @@ public class ConnectionFactory implements AutoCloseable {
         if (con == null) {
             try {
                 Class.forName(DRIVER);
-                con = DriverManager.getConnection((URL + TIMEZONEPARAM), USUARIO, SENHA);
+                con = DriverManager.getConnection(URL, USUARIO, SENHA);
             } catch (ClassNotFoundException e) {
                 try {
                     Class.forName(ALTDRIVER);

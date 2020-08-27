@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Usuario;
+import exceptions.DAOException;
 import java.sql.SQLException;
 
 /**
@@ -17,8 +18,17 @@ import java.sql.SQLException;
  * @author Ana Nicole
  */
 public class AtendimentoDAO extends ConnectionFactory {
+    
+    private static final String QUERY_BUSCAR_TODOS = "SELECT id_tipo_atendimento, nome_tipo_Atendimento FROM tb_tipo_atendimento";
+    private static final String QUERY_BUSCAR = "SELECT id_tipo_atendimento, nome_tipo_Atendimento FROM tb_tipo_atendimento WHERE id_tipo_atendimento = ?";
+    
+    private Connection con = null;
 
-    public AtendimentoDAO() {
+    public AtendimentoDAO()  throws DAOException {
+        if (con == null) {
+            throw new DAOException("Conexão nula ao criar PessoaDAO.");
+        }
+        this.con = con;
     }
 
     public void resolver(Atendimento a) {

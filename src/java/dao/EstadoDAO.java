@@ -5,7 +5,6 @@
  */
 package dao;
 
-import beans.Cidade;
 import beans.Estado;
 import dao.interfaces.DAO;
 import exceptions.DAOException;
@@ -20,12 +19,19 @@ import java.util.List;
  *
  * @author Leonardo
  */
-public class EstadoDAO implements DAO<Estado>{
-    
-    private static final String QUERY_BUSCAR_TODOS = "SELECT id_estado, sigla_estado, nome_estado FROM tb_estado";    
-    private static final String QUERY_BUSCAR = "SELECT id_estado, sigla_estado, nome_estado FROM tb_estado WHERE id_estado = ?";    
-    
+public class EstadoDAO implements DAO<Estado> {
+
+    private static final String QUERY_BUSCAR_TODOS = "SELECT id_estado, sigla_estado, nome_estado FROM tb_estado";
+    private static final String QUERY_BUSCAR = "SELECT id_estado, sigla_estado, nome_estado FROM tb_estado WHERE id_estado = ?";
+
     private Connection con = null;
+
+    public EstadoDAO() throws DAOException {
+        if (con == null) {
+            throw new DAOException("Conexão nula ao criar PessoaDAO.");
+        }
+        this.con = con;
+    }
 
     @Override
     public Estado buscar(int id) throws DAOException {
@@ -37,7 +43,7 @@ public class EstadoDAO implements DAO<Estado>{
                 estado = new Estado();
                 estado.setId(rs.getInt("id_estado"));
                 estado.setSigla(rs.getString("sigla_estado"));
-                estado.setNome(rs.getString("nome_estado"));                
+                estado.setNome(rs.getString("nome_estado"));
             }
         } catch (SQLException e) {
             throw new DAOException("Erro buscando estado: " + QUERY_BUSCAR + "/ " + Integer.toString(id), e);
@@ -54,7 +60,7 @@ public class EstadoDAO implements DAO<Estado>{
                 Estado e = new Estado();
                 e.setId(rs.getInt("id_estado"));
                 e.setSigla(rs.getString("sigla_estado"));
-                e.setNome(rs.getString("nome_estado"));    
+                e.setNome(rs.getString("nome_estado"));
                 estados.add(e);
             }
         } catch (SQLException e) {
@@ -77,5 +83,5 @@ public class EstadoDAO implements DAO<Estado>{
     public void remover(Estado t) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

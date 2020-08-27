@@ -18,10 +18,17 @@ public class CidadeDAO implements DAO<Cidade> {
 
     private static final String QUERY_BUSCAR_TODOS = "SELECT id_cidade, nome_cidade, id_estado FROM tb_cidade";
     private static final String QUERY_BUSCAR_TODOS_ESTADO = "SELECT id_cidade, nome_cidade, id_estado FROM tb_cidade WHERE id_estado = ?";
-    private static final String QUERY_BUSCAR = "SELECT id_cidade, nome_cidade, id_estado FROM tb_cidade WHERE id_cidade = ?";    
-    
+    private static final String QUERY_BUSCAR = "SELECT id_cidade, nome_cidade, id_estado FROM tb_cidade WHERE id_cidade = ?";
+
     private Connection con = null;
-    
+
+    public CidadeDAO() throws DAOException {
+        if (con == null) {
+            throw new DAOException("Conexão nula ao criar PessoaDAO.");
+        }
+        this.con = con;
+    }
+
     @Override
     public Cidade buscar(int id) throws DAOException {
         Cidade cidade = null;
@@ -32,7 +39,7 @@ public class CidadeDAO implements DAO<Cidade> {
                 cidade = new Cidade();
                 cidade.setId(rs.getInt("id_cidade"));
                 cidade.setNome(rs.getString("nome_cidade"));
-                cidade.setIdEstado(rs.getInt("id_estado"));                
+                cidade.setIdEstado(rs.getInt("id_estado"));
             }
         } catch (SQLException e) {
             throw new DAOException("Erro buscando cidade: " + QUERY_BUSCAR + "/ " + Long.toString(id), e);
@@ -57,12 +64,12 @@ public class CidadeDAO implements DAO<Cidade> {
         }
         return cidades;
     }
-    
+
     public List<Cidade> buscarTodosEstado(int id) throws DAOException {
         List<Cidade> cidades = new ArrayList<>();
         try (PreparedStatement stmt = con.prepareStatement(QUERY_BUSCAR_TODOS_ESTADO)) {
-            stmt.setInt(1, id);            
-            ResultSet rs = stmt.executeQuery();            
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Cidade c = new Cidade();
                 c.setId(rs.getInt("id_cidade"));
@@ -90,5 +97,5 @@ public class CidadeDAO implements DAO<Cidade> {
     public void remover(Cidade t) throws DAOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
